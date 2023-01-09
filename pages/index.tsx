@@ -1,8 +1,16 @@
+import dynamic from "next/dynamic";
+
+const Hero = dynamic(() => import("../components/home/hero"));
+const About = dynamic(() => import("../components/home/about"));
+
 const Home = () => {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <>
+      <Hero />
+      <div className="h-screen mt-[100vh] relative z-10">
+        <About />
+      </div>
+    </>
   );
 };
 
