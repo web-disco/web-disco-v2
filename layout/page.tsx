@@ -1,21 +1,16 @@
-import { Inter } from "@next/font/google";
-import localFont from "@next/font/local";
+import dynamic from "next/dynamic";
 
 import { LayoutProps } from "../interfaces/LayoutProps";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const basementGrotesque = localFont({
-  src: "../public/fonts/BasementGrotesque.otf",
-  variable: "--font-basement-grotesque",
-});
+const Header = dynamic(() => import("../components/header"));
 
 const Page = ({ children }: LayoutProps) => {
   return (
-    <div className={`${basementGrotesque.variable} ${inter.variable}`}>
+    <div>
+      <Header />
       <div id="smooth-wrapper">
         <div id="smooth-content">
-          <main id="page-wrap">{children}</main>
-          <footer className="bg-blue-500">footer</footer>
+          <main>{children}</main>
         </div>
       </div>
     </div>

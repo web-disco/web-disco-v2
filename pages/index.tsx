@@ -7,9 +7,10 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <div className="h-screen mt-[100vh] relative z-10">
+      <div className="h-screen mt-[100vh]">
         <About />
       </div>
+      <footer className="text-xl text-blue-500">footer</footer>
     </>
   );
 };

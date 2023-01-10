@@ -1,14 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx}", // Note the addition of the `app` directory.
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "20px",
+      screens: {
+        sm: "1800px",
+        md: "1800px",
+        lg: "1800px",
+        xl: "1800px",
+        "2xl": "1800px",
+      },
+    },
     extend: {
       fontFamily: {
-        basement: ["var(--font-basement-grotesque)"],
+        basement: ["Basement Grotesque", "sans-serif"],
         inter: ["var(--font-inter)"],
       },
       colors: {

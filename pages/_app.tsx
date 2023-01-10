@@ -12,7 +12,9 @@ import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect";
 
 const Page = dynamic(() => import("../layout/page"));
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+}
 
 const MyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = ({
   Component,

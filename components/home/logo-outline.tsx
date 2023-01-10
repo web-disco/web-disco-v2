@@ -1,7 +1,7 @@
 const LogoOutline = () => {
   return (
     <svg
-      className="w-[350px] sm:w-[450px] md:w-[550px]"
+      className="w-[55vw]"
       viewBox="0 0 1057 138"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import useIsomorphicLayoutEffect from "../../hooks/useIsomorphicLayoutEffect";
+import Header from "../header";
 
 const LogoOutline = dynamic(() => import("./logo-outline"));
 
@@ -33,20 +34,20 @@ const Hero = () => {
           start: "top top",
           pinSpacing: false,
           markers: true,
-          onUpdate: ({ progress }) => {
+          onUpdate: ({ progress, direction }) => {
             if (index === 0) {
-              const logoToProgress = gsap.utils.mapRange(1, 0, 0, 40);
-
-              gsap.to(".hero-top-logo", {
-                top: `-${logoToProgress(progress)}px`,
+              const logoToProgress = gsap.utils.mapRange(1, 0, 0, 4);
+              gsap.set(".hero-top-logo", {
+                top: `-${logoToProgress(progress)}vw`,
               });
-              gsap.to(".hero-bottom-logo", {
-                top: `${logoToProgress(progress)}px`,
+              gsap.set(".hero-bottom-logo", {
+                top: `${logoToProgress(progress)}vw`,
               });
             }
             if (index === 1) {
               gsap.to(".hero-center-logo svg", {
                 fill: `rgba(18, 18, 18, ${progress})`,
+                delay: direction === -1 ? 0 : 0.3,
               });
             }
             if (index === 2) {
@@ -66,15 +67,16 @@ const Hero = () => {
   return (
     <section ref={component}>
       <div className="hero-container">
-        <div className="hero-content w-full h-screen relative">
+        <Header />
+        <div className="hero-content w-full h-screen relative z-10">
           <div className="hero-logo-container absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
-            <div className="hero-top-logo absolute -top-[20px] sm:-top-[40px]">
+            <div className="hero-top-logo absolute -top-[4vw]">
               <LogoOutline />
             </div>
             <div className="hero-center-logo">
               <LogoOutline />
             </div>
-            <div className="hero-bottom-logo absolute top-[20px] sm:top-[40px]">
+            <div className="hero-bottom-logo absolute top-[4vw]">
               <LogoOutline />
             </div>
             <div className="hero-globe absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] opacity-0">
