@@ -1,5 +1,9 @@
+import dynamic from "next/dynamic";
+
 import { ButtonProps } from "../interfaces/ButtonProps";
 import { getButtonColor } from "../utils/color-helper";
+
+const Arrow = dynamic(() => import("./arrow"));
 
 const Button = ({
   isSubmit,
@@ -36,7 +40,10 @@ const Button = ({
         disabled={disabled}
         className={`font-space btn ${getButtonColor(color)}`}
       >
-        {text}
+        <div className="flex justify-center items-center">
+          <span>{text}</span>
+          <Arrow />
+        </div>
       </button>
     );
   }

@@ -5,6 +5,7 @@ import type { NextComponentType } from "next";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollSmoother } from "gsap/dist/ScrollSmoother";
+import { SplitText } from "gsap/dist/SplitText";
 import { ThemeProvider } from "next-themes";
 
 import "../styles/globals.css";
@@ -14,7 +15,7 @@ import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect";
 const Page = dynamic(() => import("../layout/page"));
 
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 }
 
 const MyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = ({

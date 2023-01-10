@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Selection Styles */
+*::-moz-selection {
+  @apply bg-orange
+}
+
+*::selection {
+  @apply bg-orange
+}
+/* Selection Styles */
+
 /* Fonts */
 @font-face {
   font-family: Basement Grotesque;
@@ -10,20 +20,47 @@
 }
 /* Font */
 
+/* Cursor Styles */
+/* * {
+  cursor: none;
+} */
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  z-index: 2000;
+  user-select: none;
+  pointer-events: none;
+}
+
+.follower {
+  position: fixed;
+  top: 2px;
+  left: 0;
+  z-index: 2000;
+  user-select: none;
+  pointer-events: none;
+}
+/* Cursor Styles */
+
 /* Orbit Animation */
 .orbit {
-    animation: bounce 4s ease infinite;
+    animation: bounce 4s ease-in-out infinite;
   }
   
   @keyframes bounce {
     0% {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
     }
     50% {
-      transform: translateY(5px);
+      transform: translateY(10px);
     }
     100% {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
     }
   }
 /* Orbit Animation */ 
@@ -35,6 +72,7 @@
   clip-path: polygon(0 0,calc(100% - 20.00px) 0,100% 20.00px,100% 100%,20.00px 100%,0 calc(100% - 20.00px));
   font-size: 18px;
   transition: 0.3s ease all;
+  font-family: "Basement Grotesque", sans-serif;
 }
 
 .btn-orange {
@@ -47,8 +85,9 @@
 }
 
 .btn-white {
-  background-color: white;
-  color: #181818;
+  /* background-color: white;
+  color: #181818; */
+  @apply bg-white text-black dark:bg-black dark:text-white
 }
 
 .btn-white:hover {

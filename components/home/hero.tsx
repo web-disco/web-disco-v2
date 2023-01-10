@@ -8,6 +8,7 @@ import useIsomorphicLayoutEffect from "../../hooks/useIsomorphicLayoutEffect";
 
 const Globe = dynamic(() => import("./globe"));
 const LogoOutline = dynamic(() => import("./logo-outline"));
+const Header = dynamic(() => import("../header"));
 
 const Hero = () => {
   const { theme } = useTheme();
@@ -74,7 +75,7 @@ const Hero = () => {
 
   return (
     <section ref={component}>
-      <div className="hero-container">
+      <div className="hero-container relative z-10">
         <div className="hero-content w-full h-screen relative z-10">
           <div className="hero-logo-container absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
             <div className="hero-top-logo absolute -top-[4vw]">
@@ -87,7 +88,9 @@ const Hero = () => {
               <LogoOutline />
             </div>
             <div className="hero-globe absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] opacity-0">
-              <Globe />
+              <div className="orbit">
+                <Globe />
+              </div>
             </div>
           </div>
         </div>
