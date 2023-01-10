@@ -5,6 +5,7 @@ import type { NextComponentType } from "next";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollSmoother } from "gsap/dist/ScrollSmoother";
+import { ThemeProvider } from "next-themes";
 
 import "../styles/globals.css";
 
