@@ -9,6 +9,7 @@ import { SplitText } from "gsap/dist/SplitText";
 import { ThemeProvider } from "next-themes";
 
 import "../styles/globals.css";
+import "@splidejs/react-splide/css";
 
 import useIsomorphicLayoutEffect from "../hooks/useIsomorphicLayoutEffect";
 

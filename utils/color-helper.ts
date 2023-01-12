@@ -8,7 +8,7 @@ export const COLOR = {
 export const getButtonColor = (color: string) => {
   switch (color) {
     case COLOR.ORANGE:
-      return "btn-orange";
+      return "btn-orange btn-orange-arrow";
     case COLOR.WHITE:
       return "btn-white";
     case COLOR.BLACK:

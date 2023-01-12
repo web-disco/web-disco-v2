@@ -16,7 +16,7 @@ const About = () => {
   useIsomorphicLayoutEffect(() => {
     let ctx = gsap.context(() => {
       const split = new SplitText(".home-about-title", {
-        type: "words,lines",
+        type: "lines",
       });
 
       gsap.set(split.lines, {
@@ -26,7 +26,7 @@ const About = () => {
 
       ScrollTrigger.create({
         trigger: ".home-about-container",
-        start: "top 65%",
+        start: "top 50%",
         end: "bottom bottom",
         onEnter: () => {
           gsap.to(split.lines, {
@@ -35,7 +35,7 @@ const About = () => {
             stagger: { from: "start", each: 0.15 },
             delay: 0.15,
           });
-          gsap.to(".home-about-text", {
+          gsap.to(".home-about-content", {
             opacity: 1,
             delay: 0.5,
           });
@@ -46,7 +46,7 @@ const About = () => {
             stagger: { from: "end", each: 0.15 },
             y: 100,
           });
-          gsap.to(".home-about-text", {
+          gsap.to(".home-about-content", {
             opacity: 0,
           });
         },
@@ -62,7 +62,6 @@ const About = () => {
         trigger: ".home-about-container",
         start: "top 40px",
         end: "bottom bottom",
-        markers: true,
         onEnter: () => {
           if (theme === "light") {
             gsap.to(".header", {
@@ -84,26 +83,43 @@ const About = () => {
   }, [theme]);
   return (
     <section ref={component}>
-      <div className="home-about-container bg-[#000] dark:bg-white text-white dark:text-black h-screen text-2xl relative z-20 py-20">
+      <div className="home-about-container flex flex-col justify-center bg-[#000] dark:bg-white text-white dark:text-black text-2xl relative z-20 py-20">
         <div className="container">
-          <h1 className="home-about-title font-basement uppercase text-[3.5vw] leading-[110%] mb-10">
-            A software company leveraging modern technology to build cool shit,
-            for cool people.
-          </h1>
-          <div className="grid grid-cols-2">
-            <p className="home-about-text text-grey opacity-0">
-              We strategize, develop, and execute ideas that help brands and
-              businesses have fun on the internet while succeeding in the
-              digital world.
-            </p>
-            {/* <div className="flex">
-              <div className="w-full md:w-[300px]">
-                <Button text="yo" color="orange" />
+          <div className="tracking-wide">
+            <h1 className="home-about-title font-basement uppercase lg:text-[3.5vw] leading-[110%]">
+              A software company leveraging
+            </h1>
+            <h1 className="home-about-title font-basement uppercase lg:text-[3.5vw] leading-[110%]">
+              modern technology to build cool shit,
+            </h1>
+            <h1 className="home-about-title font-basement uppercase lg:text-[3.5vw] leading-[110%] mb-10">
+              for cool people.
+            </h1>
+          </div>
+          <div className="home-about-content opacity-0">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div>
+                <p className="text-grey mb-8">
+                  We strategize, develop, and execute ideas that help brands and
+                  businesses have fun on the internet while succeeding in the
+                  digital world.
+                </p>
+                <p className="text-grey">
+                  We strategize, develop, and execute ideas that help brands and
+                  businesses have fun on the internet while succeeding in the
+                  digital world. We strategize, develop, and execute ideas that
+                  help brands and businesses have fun on the internet.
+                </p>
               </div>
-              <div className="w-full md:w-[300px]">
-                <Button text="yo" color="white" />
+              <div className="flex flex-col sm:flex-row sm:space-x-5 md:flex-col md:space-x-0 lg:flex-row lg:space-x-5">
+                <div className="w-full md:w-full lg:w-[300px]">
+                  <Button text="About Us" color="white" />
+                </div>
+                <div className="w-full md:w-full lg:w-[300px]">
+                  <Button text="Get In Touch" color="orange" />
+                </div>
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

@@ -8,7 +8,6 @@ import useIsomorphicLayoutEffect from "../../hooks/useIsomorphicLayoutEffect";
 
 const Globe = dynamic(() => import("./globe"));
 const LogoOutline = dynamic(() => import("./logo-outline"));
-const Header = dynamic(() => import("../header"));
 
 const Hero = () => {
   const { theme } = useTheme();
@@ -60,7 +59,7 @@ const Hero = () => {
           },
         });
       });
-    }, component);
+    });
 
     return () => ctx.revert();
   }, []);
@@ -69,9 +68,26 @@ const Hero = () => {
     const fill = theme === "dark" ? 255 : 18;
     gsap.to(".hero-center-logo svg", {
       fill: `rgba(${fill}, ${fill}, ${fill}, ${progress})`,
-      delay: direction === -1 ? 0 : 0.3,
+      // delay: direction === -1 ? 0 : 0.3,
     });
   }, [theme, progress, direction]);
+
+  useIsomorphicLayoutEffect(() => {
+    let resizeTimer: any;
+    window.addEventListener("resize", () => {
+      gsap.to(".hero-logo-container", {
+        opacity: 0,
+        duration: 0,
+      });
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        gsap.to(".hero-logo-container", {
+          opacity: 1,
+          duration: 0.1,
+        });
+      }, 250);
+    });
+  }, []);
 
   return (
     <section ref={component}>
@@ -94,9 +110,9 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className="hero-panel h-screen mt-[-100vh]" />
-        <div className="hero-panel h-screen" />
-        <div className="hero-panel h-[50vh]" />
+        <div className="hero-panel h-[50vh] mt-[-100vh]" />
+        <div className="hero-panel h-[10vh]" />
+        <div className="hero-panel h-[25vh]" />
         <div className="hero-panel h-[50vh]" />
       </div>
     </section>

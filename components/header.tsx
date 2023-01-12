@@ -20,7 +20,8 @@ const Header = () => {
   useIsomorphicLayoutEffect(() => {
     let ctx = gsap.context(() => {
       const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.25, yoyo: true });
-      tl.fromTo(".underscore", { opacity: 0 }, { opacity: 1 }, "+=0.25");
+      if (mounted)
+        tl.fromTo(".underscore", { opacity: 0 }, { opacity: 1 }, "+=0.25");
     }, component);
 
     return () => ctx.revert();
@@ -40,8 +41,8 @@ const Header = () => {
 
   return (
     <header ref={component}>
-      <div className="header container w-full fixed top-0 z-[999] mix-blend-difference text-black dark:text-white">
-        <div className="flex justify-between items-center py-4 relative">
+      <div className="header w-full fixed top-0 z-[999] mix-blend-difference text-black dark:text-white">
+        <div className="container flex justify-between items-center py-4 relative">
           <Link href="/">
             <h3 className="font-basement">
               <span className="underscore">_</span>WD

@@ -1,21 +1,37 @@
 import dynamic from "next/dynamic";
+import { GetStaticProps, NextPage } from "next";
+import client from "../client";
+
+import { HomePageProps } from "../interfaces/HomePageProps";
 
 const Hero = dynamic(() => import("../components/home/hero"));
 const About = dynamic(() => import("../components/home/about"));
 const Services = dynamic(() => import("../components/home/services"));
-const Header = dynamic(() => import("../components/header"));
+const FeaturedWork = dynamic(() => import("../components/home/featured-work"));
 
-const Home = () => {
+const Home: NextPage<HomePageProps> = ({ services }) => {
   return (
     <>
       <Hero />
       <div className="mt-[100vh]">
         <About />
-        <Services />
+        <Services services={services} />
+        <FeaturedWork />
       </div>
-      <footer className="text-xl text-blue-500 bg-orange">footer</footer>
     </>
   );
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const services = await client.fetch(
+    `*[_type == "service"] | order(order asc)`
+  );
+
+  return {
+    props: {
+      services,
+    },
+  };
+};

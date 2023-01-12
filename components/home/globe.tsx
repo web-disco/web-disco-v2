@@ -1,8 +1,7 @@
 const Globe = () => {
   return (
     <svg
-      width="293"
-      height="294"
+      className="w-[500px] h-[500px]"
       viewBox="0 0 293 294"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

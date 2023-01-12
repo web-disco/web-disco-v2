@@ -42,7 +42,7 @@ const Button = ({
       >
         <div className="flex justify-center items-center">
           <span>{text}</span>
-          <Arrow />
+          {/* <Arrow /> */}
         </div>
       </button>
     );
